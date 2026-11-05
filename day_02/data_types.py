@@ -14,3 +14,8 @@ dolar = 5.30
 
 is_active = False
 is_valid = True
+
+print(type(is_active));
+print(type(price));
+print(type(age));
+print(type(username))
