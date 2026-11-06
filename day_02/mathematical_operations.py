@@ -5,5 +5,5 @@ user_weight = float(input("Type your weight: "));
 user_height_converted = float(user_height ** 2);
 
 bmi = round(user_weight / user_height_converted, 2);
-message = "Your bmi is " + str(bmi); 
+message = f"Your bmi is {bmi}"; 
 print(message);
