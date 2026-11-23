@@ -22,5 +22,3 @@ for char in range(0, quantity_numbers):
     final_password.append(random.choice(symbols))
     
 random.shuffle(final_password)
-
-print(final_password)
