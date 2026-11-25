@@ -1,26 +1,42 @@
 import random
 
-words = ['piano', 'guitarra', 'bateria', 'microfone', 'baixo', 'teclado']
+words = ['otorrinolaringologista']
 chosen_word = random.choice(words)
 word_length = len(chosen_word)
 lives = 6
+game_over = False
+typed_words = []
 display = ''
-list_word = ['_'] * (len(chosen_word))
+list_word = ['_'] * (word_length)
 points = 0
 
 for position in range(word_length):
     display += '_'
 print(*display)
         
-while lives > 0:
+while not game_over:
     user_choice = input("Digite uma letra: ")
-    for index, item in enumerate(chosen_word):
-        if user_choice == item:
-            points += 1
-            list_word[index] = item
-
+    if user_choice in typed_words:
+        print(f"Você já digitou essa letra! Ainda tem {lives} chances")
+    else:
+        for index, item in enumerate(chosen_word):                    
+            if user_choice == item:
+                list_word[index] = item
+                typed_words.append(item)
+                points += 1
+                print("Acertou", user_choice)
+    
+    if user_choice not in list_word and user_choice not in typed_words:
+        typed_words.append(user_choice)
+        lives -= 1
+        print(f"Não tem a letra {user_choice}! Você tem {lives} chances")
+    
     print(*list_word)
     
-    if points == len(chosen_word):
-        lives = 0
+    if lives == 0:
+        game_over = True
+        print("Você perdeu!! ")
+    
+    if points == word_length:
+        game_over = True
         print(f"Você acertou a palavra {chosen_word}")
