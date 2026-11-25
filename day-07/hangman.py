@@ -3,19 +3,24 @@ import random
 words = ['piano', 'guitarra', 'bateria', 'microfone', 'baixo', 'teclado']
 chosen_word = random.choice(words)
 word_length = len(chosen_word)
-placeholder = ''
+lives = 6
+display = ''
+list_word = ['_'] * (len(chosen_word))
+points = 0
 
 for position in range(word_length):
-    placeholder += '_'
-print(placeholder)
-
-user_choice = input("Digite uma letra: ")
-display = ''
-
-for word in chosen_word:
-    if word == user_choice:
-        display += word
-    else:
-        display += '_'
+    display += '_'
+print(*display)
         
-print(display)
+while lives > 0:
+    user_choice = input("Digite uma letra: ")
+    for index, item in enumerate(chosen_word):
+        if user_choice == item:
+            points += 1
+            list_word[index] = item
+
+    print(*list_word)
+    
+    if points == len(chosen_word):
+        lives = 0
+        print(f"Você acertou a palavra {chosen_word}")
