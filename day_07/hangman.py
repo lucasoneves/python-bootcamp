@@ -1,18 +1,15 @@
 import random
 
-words = ['otorrinolaringologista']
+words = ['guitarra', 'medico', 'exames', 'panela', 'metallica', 'slayer', 'estojo', 'casa']
 chosen_word = random.choice(words)
 word_length = len(chosen_word)
 lives = 6
 game_over = False
 typed_words = []
-display = ''
 list_word = ['_'] * (word_length)
 points = 0
 
-for position in range(word_length):
-    display += '_'
-print(*display)
+print(*list_word)
         
 while not game_over:
     user_choice = input("Digite uma letra: ")
